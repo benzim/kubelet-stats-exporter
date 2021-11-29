@@ -2,13 +2,14 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata: 
   name: kubelet-stats-exporter
+  namespace: openshift-monitoring
 spec: 
   endpoints:
   - interval: 30s
     port: metrics
   namespaceSelector:
     matchNames:
-    - monitoring
+    - openshift-monitoring
   selector:
     matchLabels:
       name: kubelet-stats-exporter

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kubelet-stats-exporter
+  namespace: openshift-monitoring
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kubelet-stats-exporter
-        image: kubelet-stats-exporter:latest # Change to your image
+        image: benzimmerman/kubelet-stats-exporter:latest # Change to your image
         # imagePullPolicy: Never
         ports:
         - name: metrics
